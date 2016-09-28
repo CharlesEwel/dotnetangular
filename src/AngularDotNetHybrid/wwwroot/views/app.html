@@ -6,7 +6,9 @@
 </head>
 <body>
     {{body}}
-    <p>Is this template working?</p>
-    <p>Is this template still working?</p>
+    <div class="tasks" *ngFor="let currentTask of allTasks">
+        <p>{{currentTask.description}}</p>
+    </div>
+    <button (click)="getTasks()">Get Tasks</button>
 </body>
 </html>
