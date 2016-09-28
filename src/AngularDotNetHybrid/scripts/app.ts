@@ -11,12 +11,13 @@ export class AppComponent {
     title: string = 'Test!';
     body: string = 'This is the body of the page.';
     tasks = [];
+    jsonString: string = "";
     allTasks: Task[] = [{ id: 0, description: "Walk the Dog" }, { id: 1, description: "Buy Milk" }, { id: 2, description: "Do Laundry" }];
     constructor(private http: Http) {}
          getTasks() {
              alert("Your event emitter works!");
-             debugger;
-            this.http.get("/Home/GetTasks").subscribe(res => console.log(res));
+             this.http.get("/Home/GetTasks").subscribe(res => this.jsonString = res.toString());
+             console.log(JSON.parse(this.jsonString));
         }
 }
 

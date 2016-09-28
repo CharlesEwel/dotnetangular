@@ -16,12 +16,14 @@ var AppComponent = (function () {
         this.title = 'Test!';
         this.body = 'This is the body of the page.';
         this.tasks = [];
+        this.jsonString = "";
         this.allTasks = [{ id: 0, description: "Walk the Dog" }, { id: 1, description: "Buy Milk" }, { id: 2, description: "Do Laundry" }];
     }
     AppComponent.prototype.getTasks = function () {
+        var _this = this;
         alert("Your event emitter works!");
-        debugger;
-        this.http.get("/Home/GetTasks").subscribe(function (res) { return console.log(res); });
+        this.http.get("/Home/GetTasks").subscribe(function (res) { return _this.jsonString = res.toString(); });
+        console.log(JSON.parse(this.jsonString));
     };
     AppComponent = __decorate([
         core_1.Component({
